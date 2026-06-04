@@ -1,4 +1,5 @@
 Flask
-streamlit
 Flask-SQLAlchemy
+Flask-Mail
 SQLAlchemy
+gunicorn
