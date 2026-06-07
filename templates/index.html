@@ -7,6 +7,7 @@
 
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
+
 </head>
 
 <body>
@@ -59,7 +60,7 @@
 <!-- About -->
 <section id="about">
     <h2>About Me</h2>
-    <div class="card fade-in">
+    <div class="card ">
         <p>
             I am an aspiring Full Stack Developer currently pursuing a Master of Computer Applications (MCA).
              I have hands-on experience in frontend technologies such as HTML, CSS, JavaScript, and React.js
@@ -78,7 +79,7 @@
     <h2>Projects</h2>
 
    <div class="projects">
-      <div class="card fade-in">
+      <div class="card ">
         <h3>Job Portal</h3>
         <p>A responsive Job Portal UI built using React.js that allows users to browse jobs, 
             view details, and apply through an intuitive and modern interface.</p>
@@ -90,7 +91,7 @@
 
     </div>
 
-    <div class="card fade-in">
+    <div class="card">
         <h3>AI Career Advisor</h3>
         <p>AI-powered career recommendation platform using Flask, Groq LLM, and MySQL.</p>
        <a href="https://github.com/vishakhac27/ai-career-advisor" target="_blank">
@@ -100,7 +101,7 @@
 
     </div>
 
-    <div class="card fade-in">
+    <div class="card ">
         <h3>Resume Analyzer</h3>
         <p>Smart resume analysis tool that extracts skills and generates career recommendations.</p>
         <a href="https://github.com/vishakhac27/resume_analyzer.git" target="_blank">
@@ -116,7 +117,7 @@
 <!-- Skills -->
 <section id="skills">
     <h2>Skills</h2>
-    <div class="card fade-in">
+    <div class="card ">
         
         <p>HTML | CSS | JavaScript  | React JS</p>
         <p>Python | Machine Learning | NLP</p>
@@ -134,6 +135,30 @@
         <textarea name="message" placeholder="Your Message"></textarea>
         <button id= 'sendbtn' type="submit">Send</button>
     </form>
+{% if request.args.get('sent') == '1' %}
+<div id="toast" class="toast-popup">
+    ✅ Message successfully sent!
+</div>
+
+<script>
+const toast = document.getElementById("toast");
+
+// show animation
+setTimeout(() => {
+    toast.classList.add("show");
+}, 100);
+
+// hide after 3 seconds
+setTimeout(() => {
+    toast.classList.remove("show");
+}, 3000);
+
+// remove from DOM after fade out
+setTimeout(() => {
+    toast.style.display = "none";
+}, 3500);
+</script>
+{% endif %}
 
     <div class="container mt-5">
     <h3>🤖 Ask AI About Me</h3>

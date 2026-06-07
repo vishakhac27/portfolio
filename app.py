@@ -4,6 +4,7 @@ from flask import session
 import os
 from flask import jsonify
 from flask_mail import Mail, Message
+from flask import session
 
 
 app = Flask(__name__)
@@ -47,7 +48,8 @@ def admin():
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    sent = session.pop('sent', None)
+    return render_template("index.html", sent=sent)
 
 @app.route("/messages")
 def messages():
@@ -69,39 +71,49 @@ def contact():
     email = request.form.get("email")
     message = request.form.get("message")
 
+    # Save to database
     new_contact = Contact(name=name, email=email, message=message)
     db.session.add(new_contact)
     db.session.commit()
 
+    try:
+        # Email to YOU
+        admin_msg = Message(
+            subject="📩 New Portfolio Message",
+            sender=app.config['MAIL_USERNAME'],
+            recipients=[app.config['MAIL_USERNAME']]
+        )
 
-    msg = Message(
-        subject="New Contact Message",
-        sender=app.config['MAIL_USERNAME'],
-        recipients=["vishakhachachane@gmail.com"]
-    )
+        admin_msg.body = f"""
+New message from portfolio:
 
-    msg.body = f"""
-    New message from your portfolio:
+Name: {name}
+Email: {email}
+Message: {message}
+"""
+        mail.send(admin_msg)
 
-    Name: {name}
-    Email: {email}
-    Message: {message}
-    """
+        # Auto reply to USER
+        user_msg = Message(
+            subject="Thanks for contacting me!",
+            sender=app.config['MAIL_USERNAME'],
+            recipients=[email]
+        )
 
-    mail.send(msg)
+        user_msg.body = f"""
+Hi {name},
 
+Thank you for contacting me!
+I have received your message and will reply soon.
 
-    user_msg = Message(
-        subject="Thanks for contacting me!",
-        sender=app.config['MAIL_USERNAME'],
-        recipients=[email]
-    )
+- Vishakha
+"""
+        mail.send(user_msg)
 
-    user_msg.body = "Thank you for contacting me. I will get back to you soon!"
+    except Exception as e:
+        print("Email error:", e)
 
-    mail.send(user_msg)
-
-    return redirect("/")
+    return redirect("/?sent=1")
 
 if __name__ == "__main__":
     with app.app_context():
