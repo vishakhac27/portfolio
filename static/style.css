@@ -4,21 +4,66 @@ body {
     background: #0f172a;
     color: white;
 }
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    background: #020617;
-
+p{
+    letter-spacing: 0.5px;
+}
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 10%;
+    position:relative;
 }
 
-nav a {
-    color: white;
-    margin-left: 15px;
-  
+.nav-links{
+    display:flex;
+    gap:25px;
 }
 
+.nav-links a{
+    text-decoration:none;
+    color:white;
+}
+
+/* Hamburger */
+.hamburger{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    cursor:pointer;
+}
+
+.hamburger span{
+    width:28px;
+    height:3px;
+    background:white;
+    border-radius:5px;
+}
+
+
+@media(max-width:768px){
+
+    .hamburger{
+        display:flex;
+    }
+
+    .nav-links{
+        position:absolute;
+        top:70px;
+        left:0;
+        width:100%;
+       background: #1e293b;
+        flex-direction:column;
+        align-items:center;
+        padding:20px 0;
+        display:none;
+        color: white;
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+}
 .hero {
     text-align: center;
     padding: 100px 20px;
@@ -94,8 +139,7 @@ input, textarea {
     transform: scale(1.08);
 }
 
-/* RIGHT SIDE */
-.hero-right {
+/* RIGHT SIDE */.hero-right {
     max-width: 500px;
 }
 
@@ -118,7 +162,7 @@ input, textarea {
     color: #cbd5f5;
 }
 
-/* BUTTONS */
+
 .buttons {
     margin-top: 15px;
 }
@@ -145,7 +189,7 @@ input, textarea {
     opacity: 0.8;
 }
 
-/* SOCIAL LINKS */
+
 .socials {
     margin-top: 15px;
 }
@@ -161,7 +205,7 @@ input, textarea {
     text-decoration: underline;
 }
 
-/* BACKGROUND GLOW */
+
 body {
     background: radial-gradient(circle at top, #1e293b, #020617);
 }
@@ -196,7 +240,7 @@ body {
     z-index: 9999;
 }
 
-/* when shown */
+
 .toast-popup.show {
     opacity: 1;
     transform: translateY(0);

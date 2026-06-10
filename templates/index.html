@@ -15,7 +15,14 @@
 <!-- Navbar -->
 <nav>
     <h2>Vishakha Chachane</h2>
-    <div>
+
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="nav-links" id="navLinks">
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
@@ -62,12 +69,10 @@
     <h2>About Me</h2>
     <div class="card ">
         <p>
-            I am an aspiring Full Stack Developer currently pursuing a Master of Computer Applications (MCA).
-             I have hands-on experience in frontend technologies such as HTML, CSS, JavaScript, and React.js
-             , along with backend development using Python, Flask, and MySQL. I am particularly interested
-              in Artificial Intelligence and Generative AI and enjoy building practical, real-world applications
-               that combine modern web development with AI capabilities. I am continuously learning new technologies,
-                improving my problem-solving skills, and exploring innovative solutions to real-world challenges.
+           I am a Full Stack Developer and MCA student with hands-on experience in building responsive and user-friendly web applications. My expertise includes frontend development using HTML, CSS, JavaScript, and React.js, along with backend development using Python, Flask, and MySQL.
+
+I enjoy creating clean, modern, and efficient web solutions that deliver a great user experience. From designing responsive interfaces to developing robust backend functionality and integrating databases, I am passionate about every stage of the development process. I continuously enhance my technical skills by working on real-world projects and learning modern web technologies to build scalable and impactful applications.
+
 
 
         </p>
@@ -137,23 +142,23 @@
     </form>
 {% if request.args.get('sent') == '1' %}
 <div id="toast" class="toast-popup">
-    ✅ Message successfully sent!
+     Message successfully sent!
 </div>
 
 <script>
 const toast = document.getElementById("toast");
 
-// show animation
+
 setTimeout(() => {
     toast.classList.add("show");
 }, 100);
 
-// hide after 3 seconds
+
 setTimeout(() => {
     toast.classList.remove("show");
 }, 3000);
 
-// remove from DOM after fade out
+
 setTimeout(() => {
     toast.style.display = "none";
 }, 3500);
