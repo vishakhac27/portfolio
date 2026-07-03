@@ -40,6 +40,13 @@ nav{
     border-radius:5px;
 }
 
+.btn-outline {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #000;
+    text-decoration: none;
+    border-radius: 5px;
+}
 
 @media(max-width:768px){
 
@@ -114,7 +121,7 @@ input, textarea {
     margin: 10px 0;
     padding: 10px;
 }
-/* HERO LAYOUT */
+
 .hero {
     display: flex;
     align-items: center;
@@ -124,7 +131,6 @@ input, textarea {
     flex-wrap: wrap;
 }
 
-/* LEFT (IMAGE) */
 .profile-img {
     width: 200px;
     height: 200px;
@@ -139,7 +145,7 @@ input, textarea {
     transform: scale(1.08);
 }
 
-/* RIGHT SIDE */.hero-right {
+.hero-right {
     max-width: 500px;
 }
 

@@ -1,6 +1,11 @@
-// Typing effect
+
 const text = "Vishakha";
 let i = 0;
+
+function showAlert() {
+    alert("Opening your email client...");
+    window.location.href = "mailto:vishakhachachane@gmail.com";
+}
 
 function typing() {
     if (i < text.length) {
@@ -11,7 +16,7 @@ function typing() {
 }
 typing();
 
-// Scroll animation
+
 const elements = document.querySelectorAll(".fade-in");
 
 window.addEventListener("scroll", () => {
@@ -44,3 +49,4 @@ const navLinks = document.getElementById("navLinks");
 hamburger.addEventListener("click", () => {
     navLinks.classList.toggle("active");
 });
+
